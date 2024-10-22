@@ -15,3 +15,29 @@ function enlargeMap() {
     const mapContainer = document.querySelector('.map-container');
     mapContainer.classList.toggle('enlarged');
 }
+
+
+document.getElementById("theme_switcher").addEventListener("click", function () {
+    document.body.classList.toggle("dark")
+})
+
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.client-testimonials');
+const totalSlides = slides.length;
+
+function showSlide(index) {
+    slides.forEach(slide => slide.style.display = 'none');
+    slides[index].style.display = 'block';
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+}
+
+setInterval(nextSlide, 5000); 
+
+document.addEventListener('DOMContentLoaded', function() {
+    showSlide(currentSlide);
+});
